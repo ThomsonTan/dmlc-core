@@ -479,7 +479,7 @@ inline void LuaRef::SetByPopStack_(LuaState* s) {
   CHECK(state_ == nullptr);
   lua_State* L = s->L_;
   if (!lua_isnil(L, -1)) {
-    ref_ = lua_ref(L, LUA_REGISTRYINDEX);
+    ref_ = luaL_ref(L, LUA_REGISTRYINDEX);
     state_ = s;
   } else {
     lua_pop(L, 1);
